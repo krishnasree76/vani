@@ -24,8 +24,8 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Facebook, href: 'https://facebook.com/vanitechnologies', label: 'Facebook' },
-    { icon: Instagram, href: 'https://instagram.com/vanitechnologies', label: 'Instagram' },
-    { icon: Linkedin, href: 'https://linkedin.com/company/vanitechnologies', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://www.instagram.com/vani_technologies_limited', label: 'Instagram' },
+    // { icon: Linkedin, href: 'https://linkedin.com/company/vanitechnologies', label: 'LinkedIn' },
   ];
 
   const scrollToSection = (href: string) => {
