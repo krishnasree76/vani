@@ -1,41 +1,44 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Partners', href: '#partners' },
-  { name: 'Training', href: '#training' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: 'home' },
+  { name: 'About', href: 'about' },
+  { name: 'Services', href: 'services' },
+  { name: 'Partners', href: 'partners' },
+  { name: 'Training', href: 'training' },
+  { name: 'Contact', href: 'contact' },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
     if (!element) return;
 
-    const navbarHeight = 80; // h-20
-    const elementPosition =
-      element.getBoundingClientRect().top + window.scrollY;
+    const navbarHeight = navRef.current?.offsetHeight ?? 80;
 
-    const offsetPosition = elementPosition - navbarHeight;
+    const y =
+      element.getBoundingClientRect().top +
+      window.pageYOffset -
+      navbarHeight -
+      8; // small gap
 
     window.scrollTo({
-      top: offsetPosition,
+      top: y,
       behavior: 'smooth',
     });
 
@@ -44,6 +47,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
+      ref={navRef}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
@@ -54,12 +58,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
 
           {/* Logo */}
-          <motion.a
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('#home');
-            }}
+          <motion.button
+            onClick={() => scrollToSection('home')}
             className="flex items-center gap-2"
             whileHover={{ scale: 1.02 }}
           >
@@ -68,22 +68,18 @@ const Navbar = () => {
               alt="Vani Technologies Limited"
               className="h-12 w-auto"
             />
-          </motion.a>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.href);
-                }}
+                onClick={() => scrollToSection(link.href)}
                 className="font-medium text-sm text-primary hover:text-primary/80 transition-colors"
               >
                 {link.name}
-              </a>
+              </button>
             ))}
 
             <motion.a
@@ -124,18 +120,24 @@ const Navbar = () => {
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }}
-                  className="py-3 px-4 text-primary font-medium hover:bg-muted rounded-lg"
+                  onClick={() => scrollToSection(link.href)}
+                  className="py-3 px-4 text-primary font-medium hover:bg-muted rounded-lg text-left"
                 >
                   {link.name}
-                </a>
+                </button>
               ))}
+
+              <a
+                href="https://wa.me/447384055753"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-lg font-medium mt-2"
+              >
+                <Phone className="w-4 h-4" />
+                Talk to Us
+              </a>
             </div>
           </motion.div>
         )}
