@@ -26,9 +26,19 @@ const Navbar = () => {
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (!element) return;
+
+    const navbarHeight = 80; // h-20
+    const elementPosition =
+      element.getBoundingClientRect().top + window.scrollY;
+
+    const offsetPosition = elementPosition - navbarHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    });
+
     setIsMobileMenuOpen(false);
   };
 
@@ -70,7 +80,7 @@ const Navbar = () => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="nav-link font-medium text-sm text-primary hover:text-primary/80 transition-colors"
+                className="font-medium text-sm text-primary hover:text-primary/80 transition-colors"
               >
                 {link.name}
               </a>
@@ -80,7 +90,7 @@ const Navbar = () => {
               href="https://wa.me/447384055753"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
+              className="flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg font-medium text-sm hover:bg-primary/90"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -93,7 +103,6 @@ const Navbar = () => {
           <button
             className="lg:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 text-primary" />
@@ -122,21 +131,11 @@ const Navbar = () => {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="py-3 px-4 text-primary font-medium hover:bg-muted rounded-lg transition-colors"
+                  className="py-3 px-4 text-primary font-medium hover:bg-muted rounded-lg"
                 >
                   {link.name}
                 </a>
               ))}
-
-              <a
-                href="https://wa.me/447384055753"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-lg font-medium mt-2"
-              >
-                <Phone className="w-4 h-4" />
-                Talk to Us
-              </a>
             </div>
           </motion.div>
         )}
