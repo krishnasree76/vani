@@ -125,8 +125,8 @@ const Footer = () => {
               </li>
               <li className="flex gap-3">
                 <Mail className="w-5 h-5 text-vani-blue-400 flex-shrink-0" />
-                <a href="mailto:info@vanitechnologies.co.uk" className="text-vani-blue-200 text-sm hover:text-white transition-colors">
-                  info@vanitechnologies.co.uk
+                <a href="mailto:vanitechnologieslimited@gmail.com" className="text-vani-blue-200 text-sm hover:text-white transition-colors">
+                  vanitechnologieslimited@gmail.com
                 </a>
               </li>
               <li className="flex gap-3">

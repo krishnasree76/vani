@@ -120,7 +120,7 @@ Looking forward to hearing from you!`;
     {
       icon: Mail,
       label: 'Email',
-      value: 'info@vanitechnologies.co.uk',
+      value: 'vanitechnologieslimited@gmail.com',
       color: 'text-purple-500',
       bg: 'bg-purple-500/10'
     },
