@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Vani Technologies Design System - Deep Blue & Silver Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Royal Blue to Light Blue */
+    --background: 210 20% 98%;
+    --foreground: 215 50% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 50% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 50% 15%;
+
+    /* Primary: Deep Royal Blue */
+    --primary: 210 85% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Light Blue */
+    --secondary: 205 70% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted: Light Gray-Blue */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 20% 45%;
+
+    /* Accent: Silver */
+    --accent: 210 15% 75%;
+    --accent-foreground: 215 50% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 210 85% 30%;
+
+    --radius: 0.75rem;
+
+    /* Extended Brand Palette */
+    --vani-blue-900: 210 90% 20%;
+    --vani-blue-800: 210 88% 25%;
+    --vani-blue-700: 210 85% 30%;
+    --vani-blue-600: 210 82% 38%;
+    --vani-blue-500: 205 75% 45%;
+    --vani-blue-400: 205 70% 55%;
+    --vani-blue-300: 205 65% 70%;
+    --vani-blue-200: 205 60% 85%;
+    --vani-blue-100: 205 50% 95%;
+
+    --vani-silver-600: 215 15% 35%;
+    --vani-silver-500: 215 12% 50%;
+    --vani-silver-400: 210 15% 65%;
+    --vani-silver-300: 210 15% 75%;
+    --vani-silver-200: 210 15% 88%;
+    --vani-silver-100: 210 20% 96%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 90% 20%) 0%, hsl(205 75% 45%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 90% 15%) 0%, hsl(210 85% 30%) 50%, hsl(205 70% 55%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+    --gradient-mesh: radial-gradient(ellipse at 20% 30%, hsl(205 70% 55% / 0.15) 0%, transparent 50%),
+                     radial-gradient(ellipse at 80% 70%, hsl(210 85% 30% / 0.1) 0%, transparent 50%),
+                     radial-gradient(ellipse at 50% 50%, hsl(210 15% 75% / 0.05) 0%, transparent 70%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(215 50% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(215 50% 15% / 0.07), 0 2px 4px -1px hsl(215 50% 15% / 0.04);
+    --shadow-lg: 0 10px 15px -3px hsl(215 50% 15% / 0.08), 0 4px 6px -2px hsl(215 50% 15% / 0.04);
+    --shadow-xl: 0 20px 25px -5px hsl(215 50% 15% / 0.1), 0 10px 10px -5px hsl(215 50% 15% / 0.04);
+    --shadow-glow: 0 0 40px hsl(205 70% 55% / 0.2);
+    --shadow-card: 0 4px 20px hsl(210 85% 30% / 0.08);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 215 50% 15%;
+    --sidebar-primary: 210 85% 30%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 215 50% 15%;
+    --sidebar-border: 210 20% 90%;
+    --sidebar-ring: 205 70% 55%;
+  }
+
+  .dark {
+    --background: 215 50% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 215 45% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 215 45% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 205 70% 55%;
+    --primary-foreground: 215 50% 8%;
+
+    --secondary: 210 40% 25%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 215 40% 18%;
+    --muted-foreground: 210 15% 65%;
+
+    --accent: 215 30% 25%;
+    --accent-foreground: 210 20% 95%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 20% 95%;
+
+    --border: 215 35% 20%;
+    --input: 215 35% 20%;
+    --ring: 205 70% 55%;
+
+    --sidebar-background: 215 50% 10%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 205 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 35% 18%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 35% 20%;
+    --sidebar-ring: 205 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glass morphism card */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  /* Hero gradient background */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  /* Mesh background */
+  .mesh-bg {
+    background-image: var(--gradient-mesh);
+  }
+
+  /* Service card hover */
+  .service-card {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .service-card:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Partner logo grayscale effect */
+  .partner-logo {
+    @apply grayscale opacity-60 transition-all duration-300;
+  }
+
+  .partner-logo:hover {
+    @apply grayscale-0 opacity-100;
+  }
+
+  /* WhatsApp button pulse */
+  .whatsapp-pulse {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply w-20 h-1 rounded-full mx-auto;
+    background: var(--gradient-primary);
+  }
+
+  /* Button variants */
+  .btn-hero-primary {
+    @apply bg-white text-primary font-semibold px-8 py-4 rounded-xl;
+    @apply hover:bg-white/90 transition-all duration-300;
+    @apply shadow-lg hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .btn-hero-secondary {
+    @apply bg-transparent text-white font-semibold px-8 py-4 rounded-xl;
+    @apply border-2 border-white/30 hover:border-white/60;
+    @apply hover:bg-white/10 transition-all duration-300;
+  }
+
+  /* Floating particles */
+  .particle {
+    @apply absolute rounded-full bg-white/10;
+    animation: float 20s infinite ease-in-out;
+  }
+
+  /* Navigation link */
+  .nav-link {
+    @apply relative text-foreground/70 hover:text-foreground transition-colors duration-200;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 hsl(142 70% 45% / 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px hsl(142 70% 45% / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 hsl(142 70% 45% / 0);
+  }
+}
+html, body {
+  overflow-x: hidden;
+}
