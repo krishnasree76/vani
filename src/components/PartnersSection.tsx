@@ -56,29 +56,30 @@ const PartnersSection = () => {
 
         {/* Partners Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
-        >
-          {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="group"
-            >
-              <div className="bg-card border border-border rounded-xl p-8 h-28 flex items-center justify-center hover:shadow-lg hover:border-primary/20 transition-all duration-300">
-                <img
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  className="max-h-12 w-auto grayscale group-hover:grayscale-0 transition duration-300"
-                />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+  initial={{ opacity: 0, y: 30 }}
+  animate={isInView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+>
+  {partners.map((partner, index) => (
+    <motion.div
+      key={partner.name}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.5, delay: 0.1 * index }}
+      className="group"
+    >
+      <div className="bg-card border border-border rounded-xl p-8 h-28 flex items-center justify-center hover:shadow-lg hover:border-primary/20 transition-all duration-300">
+        <img
+          src={partner.logo}
+          alt={`${partner.name} logo`}
+          className="max-h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+    </motion.div>
+  ))}
+</motion.div>
+
 
         {/* Trust Badge */}
         <motion.div
