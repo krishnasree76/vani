@@ -25,28 +25,25 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // --- REVISED SCROLL LOGIC ---
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    
-    // Close mobile menu first so the layout settles
+    if (!element) return;
+
+    const navbarHeight = navRef.current?.offsetHeight ?? 80;
+
+    const y =
+      element.getBoundingClientRect().top +
+      window.pageYOffset -
+      navbarHeight -
+      8; // small gap
+
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth',
+    });
+
     setIsMobileMenuOpen(false);
-
-    if (element) {
-      const navbarHeight = navRef.current?.offsetHeight ?? 80;
-      
-      // We calculate the position relative to the document
-      // Using window.scrollY (modern) instead of pageYOffset
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navbarHeight - 8;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
   };
-  // ---------------------------
 
   return (
     <motion.nav
@@ -102,7 +99,6 @@ const Navbar = () => {
           <button
             className="lg:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 text-primary" />
@@ -120,14 +116,14 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-border overflow-hidden"
+            className="lg:hidden bg-white border-t border-border"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="py-3 px-4 text-primary font-medium hover:bg-muted rounded-lg text-left w-full"
+                  className="py-3 px-4 text-primary font-medium hover:bg-muted rounded-lg text-left"
                 >
                   {link.name}
                 </button>
