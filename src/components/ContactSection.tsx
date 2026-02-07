@@ -280,7 +280,7 @@ Looking forward to hearing from you!`;
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="service" className="text-sm font-bold text-foreground ml-1">Select Service</label>
+                    <label htmlFor="service" className="text-sm font-bold text-foreground ml-1">Select Course/Service</label>
                     <select
                       id="service"
                       name="service"
@@ -290,7 +290,7 @@ Looking forward to hearing from you!`;
                         errors.service ? 'border-destructive' : 'border-border focus:border-primary'
                       }`}
                     >
-                      <option value="">Choose a service...</option>
+                      <option value="">Choose a Course/service...</option>
                       {services.map((service) => (
                         <option key={service} value={service}>{service}</option>
                       ))}

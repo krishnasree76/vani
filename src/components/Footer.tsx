@@ -38,7 +38,8 @@ const Footer = () => {
   return (
     <footer className="bg-vani-blue-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8 mb-12">
+
           {/* Company Info */}
           {/* Company Info */}
 <div>
@@ -72,7 +73,8 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="lg:pl-16">
+
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -93,7 +95,7 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div>
+          {/* <div>
             <h4 className="text-lg font-semibold mb-4">Our Services</h4>
             <ul className="space-y-3">
               {services.map((service) => (
@@ -102,7 +104,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div>
